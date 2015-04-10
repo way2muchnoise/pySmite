@@ -46,3 +46,9 @@ def get_league_tier(number):
     if league == 5:
         tier = 4
     return leagues[league] + " " + tiers[tier]
+
+
+def get_game_mode(number):
+    for k, v in queue.iteritems():
+        if number == v:
+            return k

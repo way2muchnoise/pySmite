@@ -4,7 +4,7 @@ __author__ = 'jens'
 import session
 import data
 import smite
-
+import smite.params
 
 def print_indent(indent, text):
     for x in xrange(indent):
@@ -30,7 +30,7 @@ def print_dict(d, depth=0):
         print_indent(depth, d)
 
 s = session.create(data.dev_id, data.auth_key)
-player_name = 'krispie'
+player_name = raw_input('Give a player name:')
 player_status = smite.get_player_status(data.dev_id, data.auth_key, s.get_id(), player_name)
 if player_status[0]['status'] == 2:
     print player_name + ' is in Pick and Bans'
@@ -40,6 +40,7 @@ elif player_status[0]['status'] == 3:
     for player in match:
         league = smite.get_player_league_with_elo(data.dev_id, data.auth_key, s.get_id(), player['playerName'])
         teams[player['taskForce']-1].append('%s (%s) : %s' % (player['playerName'], player['GodName'], league))
+    print smite.params.get_game_mode(match[0]['Queue'])
     print 'Team 1:'
     for player in teams[0]:
         print ' ' + player
