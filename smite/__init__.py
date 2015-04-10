@@ -3,6 +3,7 @@ __author__ = 'jens'
 import session
 import request
 import params
+import urllib2
 
 base_url = 'http://api.smitegame.com/smiteapi.svc/'
 
@@ -19,7 +20,7 @@ def get_player(dev_id, auth_key, session_id, name):
         + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
         + session_id + "/"
         + timestamp + "/"
-        + name
+        + urllib2.quote(name)
     )
 
 
@@ -51,7 +52,7 @@ def get_player_status(dev_id, auth_key, session_id, name):
         + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
         + session_id + "/"
         + timestamp + "/"
-        + name
+        + urllib2.quote(name)
     )
 
 
