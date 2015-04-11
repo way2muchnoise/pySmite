@@ -20,7 +20,7 @@ def get_player(dev_id, auth_key, session_id, name):
         + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
         + session_id + "/"
         + timestamp + "/"
-        + urllib2.quote(name)
+        + urllib2.quote(name.encode('utf8'))
     )
 
 
