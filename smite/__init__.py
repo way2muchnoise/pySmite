@@ -104,3 +104,19 @@ def get_clan(dev_id, auth_key, session_id, name):
         + timestamp + "/"
         + urllib2.quote(name)
     )
+
+
+def get_friends(dev_id, auth_key, session_id, name):
+    method_name = "getfriends"
+    response_format = "json"
+    timestamp = session.get_timestamp()
+    return request.json(
+        base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + session_id + "/"
+        + timestamp + "/"
+        + urllib2.quote(name)
+    )
