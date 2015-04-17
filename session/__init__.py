@@ -35,3 +35,18 @@ def create(dev_id, auth_key):
 
 def get_timestamp():
     return datetime.datetime.utcnow().strftime('%Y%m%d%H%M%S')
+
+
+def test_session(session_id, dev_id, auth_key):
+    method_name = "testsession"
+    response_format = "json"
+    timestamp = get_timestamp()
+    return request.json(
+        smite.base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + session_id + "/"
+        + timestamp
+    )
