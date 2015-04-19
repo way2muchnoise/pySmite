@@ -136,3 +136,19 @@ def get_items(dev_id, auth_key, session_id, lang=params.langCode['English']):
         + timestamp + "/"
         + lang
     )
+
+
+def get_gods(dev_id, auth_key, session_id, lang=params.langCode['English']):
+    method_name = "getgods"
+    response_format = "json"
+    timestamp = session.get_timestamp()
+    return request.json(
+        base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + session_id + "/"
+        + timestamp + "/"
+        + lang
+    )
