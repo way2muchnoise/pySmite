@@ -71,7 +71,7 @@ def get_player_league_with_elo(dev_id, auth_key, session_id, name):
     if player['Tier_Conquest'] > 1 or games > 9:
         return params.get_league_tier(player['Tier_Conquest']) + " " + repr(round(player['Rank_Stat']))[:-2]
     else:
-        return 'Qualifying ' + games + '/10 ' + repr(round(player['Rank_Stat']))[:-2]
+        return 'Qualifying ' + repr(games) + '/10 ' + repr(round(player['Rank_Stat']))[:-2]
 
 
 def get_god_ranks(dev_id, auth_key, session_id, player_name):
