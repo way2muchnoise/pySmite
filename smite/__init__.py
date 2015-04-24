@@ -90,7 +90,7 @@ def get_god_ranks(dev_id, auth_key, session_id, player_name):
     )
 
 
-def get_clan(dev_id, auth_key, session_id, name):
+def get_clan_player(dev_id, auth_key, session_id, name):
     method_name = "getteamplayers"
     response_format = "json"
     timestamp = session.get_timestamp()
@@ -151,4 +151,20 @@ def get_gods(dev_id, auth_key, session_id, lang=params.langCode['English']):
         + session_id + "/"
         + timestamp + "/"
         + lang
+    )
+
+
+def search_clans(dev_id, auth_key, session_id, search):
+    method_name = "searchteams"
+    response_format = "json"
+    timestamp = session.get_timestamp()
+    return request.json(
+        base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + session_id + "/"
+        + timestamp + "/"
+        + urllib2.quote(search)
     )
