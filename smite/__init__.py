@@ -58,6 +58,9 @@ def get_player_status(dev_id, auth_key, session_id, name):
 
 def get_player_league(dev_id, auth_key, session_id, name):
     player = get_player(dev_id, auth_key, session_id, name)[0]
+    level = player['Level']
+    if level < 30:
+        return 'Level ' + repr(level)
     games = player['LeagueConquest']['Wins'] + player['LeagueConquest']['Losses']
     if player['Tier_Conquest'] > 1 or games > 9:
         return params.get_league_tier(player['Tier_Conquest'])
@@ -67,6 +70,9 @@ def get_player_league(dev_id, auth_key, session_id, name):
 
 def get_player_league_with_elo(dev_id, auth_key, session_id, name):
     player = get_player(dev_id, auth_key, session_id, name)[0]
+    level = player['Level']
+    if level < 30:
+        return 'Level ' + repr(level)
     games = player['LeagueConquest']['Wins'] + player['LeagueConquest']['Losses']
     if player['Tier_Conquest'] > 1 or games > 9:
         return params.get_league_tier(player['Tier_Conquest']) + " " + repr(round(player['Rank_Stat']))[:-2]
