@@ -1,10 +1,11 @@
-__author__ = 'jens'
+__author__ = 'way2muchnoise'
 
 
 import session
 import data
 import smite
 import smite.params
+
 
 def print_indent(indent, text):
     for x in xrange(indent):

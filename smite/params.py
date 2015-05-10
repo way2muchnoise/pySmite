@@ -1,4 +1,4 @@
-__author__ = 'jens'
+__author__ = 'way2muchnoise'
 
 
 queue = {
