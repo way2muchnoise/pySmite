@@ -9,7 +9,7 @@ queue = {
     'ConquestChallenge': '429',
     'ConquestRanked': '430',
     'Domination': '433',
-    'MOTD': '434',
+    'MOTD_old': '434',
     'Arena': '435',
     'ArenaChallenge': '438',
     'DominationChallenge': '439',
@@ -19,7 +19,8 @@ queue = {
     'AssaultChallenge': '446',
     'Joust3v3': '448',
     'ConquestLeague': '451',
-    'ArenaLeague': '452'
+    'ArenaLeague': '452',
+    'MOTD': '465'
     #Find and add siege
 }
 
