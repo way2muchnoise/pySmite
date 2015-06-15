@@ -20,8 +20,8 @@ queue = {
     'Joust3v3': '448',
     'ConquestLeague': '451',
     'ArenaLeague': '452',
-    'MOTD': '465'
-    #Find and add siege
+    'MOTD': '465',
+    'Siege': '459'
 }
 
 langCode = {
