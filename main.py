@@ -41,7 +41,7 @@ def get_player_ranks(player_name):
         match = smite.get_match_player_details(data.dev_id, data.auth_key, s.get_id(), player_status[0]['Match'])
         teams = [[], []]
         for player in match:
-            league = smite.get_player_league_with_elo(data.dev_id, data.auth_key, s.get_id(), player['playerName'])
+            league = smite.get_player_league(data.dev_id, data.auth_key, s.get_id(), player['playerName'])
             teams[player['taskForce']-1].append('%s (%s) : %s' % (player['playerName'], player['GodName'], league))
         print smite.params.get_game_mode(match[0]['Queue'])
         print 'Team 1:'
