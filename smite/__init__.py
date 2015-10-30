@@ -174,3 +174,19 @@ def search_clans(dev_id, auth_key, session_id, search):
         + timestamp + "/"
         + urllib2.quote(search)
     )
+
+
+def get_achievements(dev_id, auth_key, session_id, player_id):
+    method_name = "getplayerachievements"
+    response_format = "json"
+    timestamp = session.get_timestamp()
+    return request.json(
+        base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + session_id + "/"
+        + timestamp + "/"
+        + urllib2.quote(player_id)
+    )
