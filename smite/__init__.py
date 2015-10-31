@@ -24,6 +24,10 @@ def get_player(dev_id, auth_key, session_id, name):
     )
 
 
+def get_player_id(dev_id, auth_key, session_id, player_name):
+    return get_player(dev_id, auth_key, session_id, player_name)[0]['Id']
+
+
 def get_match_player_details(dev_id, auth_key, session_id, match_id):
     method_name = "getmatchplayerdetails"
     response_format = "json"
@@ -176,9 +180,10 @@ def search_clans(dev_id, auth_key, session_id, search):
     )
 
 
-def get_achievements(dev_id, auth_key, session_id, player_id):
+def get_achievements(dev_id, auth_key, session_id, player_name):
     method_name = "getplayerachievements"
     response_format = "json"
+    player_id = get_player_id(dev_id, auth_key, session_id, player_name)
     timestamp = session.get_timestamp()
     return request.json(
         base_url
@@ -188,5 +193,5 @@ def get_achievements(dev_id, auth_key, session_id, player_id):
         + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
         + session_id + "/"
         + timestamp + "/"
-        + urllib2.quote(player_id)
+        + repr(player_id)
     )
