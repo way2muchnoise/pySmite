@@ -1,6 +1,5 @@
 __author__ = 'way2muchnoise'
 
-
 import session
 import data
 import smite
@@ -18,13 +17,13 @@ def print_dict(d, depth=0):
         for k, v in d.items():
             if hasattr(v, '__iter__'):
                 print_indent(depth, k)
-                print_dict(v, depth+1)
+                print_dict(v, depth + 1)
             else:
                 print_indent(depth, '%s : %s' % (k, v))
     elif type(d) == list:
         for v in d:
             if hasattr(v, '__iter__'):
-                print_dict(v, depth+1)
+                print_dict(v, depth + 1)
             else:
                 print_indent(depth, v)
     else:
@@ -42,7 +41,7 @@ def get_player_ranks(player_name):
         teams = [[], []]
         for player in match:
             league = smite.get_player_league(data.dev_id, data.auth_key, s.get_id(), player['playerName'])
-            teams[player['taskForce']-1].append('%s (%s) : %s' % (player['playerName'], player['GodName'], league))
+            teams[player['taskForce'] - 1].append('%s (%s) : %s' % (player['playerName'], player['GodName'], league))
         print smite.params.get_game_mode(match[0]['Queue'])
         print 'Team 1:'
         for player in teams[0]:
@@ -57,5 +56,3 @@ def get_player_ranks(player_name):
 s = session.create(data.dev_id, data.auth_key)
 player_name = raw_input('Give a player name:')
 get_player_ranks(player_name)
-
-

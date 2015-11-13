@@ -1,6 +1,5 @@
 __author__ = 'way2muchnoise'
 
-
 queue = {
     'Conquest5v5': '423',
     'NoviceQueue': '424',

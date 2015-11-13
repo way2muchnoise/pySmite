@@ -1,6 +1,5 @@
 __author__ = 'way2muchnoise'
 
-
 import urllib2
 import json as json_reader
 
