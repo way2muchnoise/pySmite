@@ -17,10 +17,13 @@ queue = {
     'Assault': '445',
     'AssaultChallenge': '446',
     'Joust3v3': '448',
+    'JoustRanked': '450',
     'ConquestLeague': '451',
     'ArenaLeague': '452',
     'MOTD': '465',
-    'Siege': '459'
+    'Siege': '459',
+    'Clash': '466',
+    'ClashChallenge': '467',
 }
 
 langCode = {
