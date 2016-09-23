@@ -6,6 +6,8 @@ import params
 import urllib2
 
 base_url = 'http://api.smitegame.com/smiteapi.svc/'
+xbox_url = 'http://api.xbox.smitegame.com/smiteapi.svc'
+ps4_url = 'http://api.ps4.smitegame.com/smiteapi.svc'
 
 
 def get_player(dev_id, auth_key, session_id, name):
@@ -160,7 +162,33 @@ def get_gods(dev_id, auth_key, session_id, lang=params.langCode['English']):
         + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
         + session_id + "/"
         + timestamp + "/"
-        + lang
+        + repr(lang)
+    )
+
+
+def get_god_id(dev_id, auth_key, session_id, god_name, lang=params.langCode['English']):
+    gods = get_gods(dev_id, auth_key, session_id, lang)
+    for god in gods:
+        if unicode.lower(god["Name"]) == str.lower(god_name):
+            return god["id"]
+    return -1
+
+
+def get_god_skins(dev_id, auth_key, session_id, god_name, lang=params.langCode['English']):
+    method_name = "getgodskins"
+    response_format = "json"
+    god_id = get_god_id(dev_id, auth_key, session_id, god_name, lang)
+    timestamp = session.get_timestamp()
+    return request.json(
+        base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + session_id + "/"
+        + timestamp + "/"
+        + repr(god_id) + "/"
+        + repr(lang)
     )
 
 
@@ -194,4 +222,33 @@ def get_achievements(dev_id, auth_key, session_id, player_name):
         + session_id + "/"
         + timestamp + "/"
         + repr(player_id)
+    )
+
+
+def get_esports_details(dev_id, auth_key, session_id):
+    method_name = "getesportsproleaguedetails"
+    response_format = "json"
+    timestamp = session.get_timestamp()
+    return request.json(
+        base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + session_id + "/"
+        + timestamp
+    )
+
+
+def get_patch_info(dev_id, auth_key):
+    method_name = "getpatchinfo"
+    response_format = "json"
+    timestamp = session.get_timestamp()
+    return request.json(
+        base_url
+        + method_name
+        + response_format + "/"
+        + dev_id + "/"
+        + session.get_signature(dev_id, method_name, auth_key, timestamp) + "/"
+        + timestamp
     )

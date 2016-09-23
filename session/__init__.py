@@ -6,7 +6,7 @@ import request
 import smite
 
 
-class Session():
+class Session:
     def __init__(self, json):
         self.id = json['session_id']
 
